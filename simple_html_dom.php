@@ -68,16 +68,7 @@ function file_get_html($url, $use_include_path = false, $context=null, $offset =
     $dom = new simple_html_dom(null, $lowercase, $forceTagsClosed, $target_charset, $defaultBRText);
     // For sourceforge users: uncomment the next line and comment the retreive_url_contents line 2 lines down if it is not already done.
 
-    //proxy
 
-    // Define a context for HTTP.
-    $aContext = array(
-        'http' => array(
-            'proxy' => 'tcp://proxy.tencent.com:8080', // This needs to be the server and the port of the NTLM Authentication Proxy Server.
-            'request_fulluri' => True,
-            ),
-        );
-    $cxContext = stream_context_create($aContext);
 
 
     $contents = file_get_contents($url, $use_include_path, $cxContext, $offset);
