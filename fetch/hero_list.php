@@ -13,7 +13,10 @@ function fetchDuowan($htmlstring){
 
     foreach($html->find('#champion_list li') as $element) {
 
-       print_r($element->children(0)->href);
+        $pattern = '/heros\/(\S+)\//';
+        preg_match($pattern, $element->children(0)->href, $matches, PREG_OFFSET_CAPTURE, 3);
+        print_r($matches);
+       //print_r($element->children(0)->href);
        echo "<img src='".$element->children(0)->children(0)->src."'>";
        print_r($element->children(1)->plaintext);
     }
